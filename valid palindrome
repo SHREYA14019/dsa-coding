@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <cctype>   
+
+using namespace std;
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string t = "";
+        
+        for (char c : s) {
+            if (isalnum(c)) t += tolower(c);
+        }
+
+     
+        for (int i = 0; i < t.size() / 2; i++) {
+            if (t[i] != t[t.size() - 1 - i])
+                return false;
+        }
+
+        return true;
+    }
+};
+
+int main() {
+    Solution solution;
+    string input;
+
+    cout << "Enter a string: ";
+    getline(cin, input);
+
+    if (solution.isPalindrome(input))
+        cout << "The string is a palindrome." << endl;
+    else
+        cout << "The string is NOT a palindrome." << endl;
+
+    return 0;
+}
